@@ -98,7 +98,7 @@
                         android:id="@+id/img_location"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:src="@drawable/ic_location"
+                        android:src="@drawable/ic_location_blue"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

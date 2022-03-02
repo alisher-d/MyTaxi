@@ -9,4 +9,6 @@
     <string name="my_trips">Мои поездки</string>
     <string name="payment_methods">Способы оплаты</string>
     <string name="favorite_addresses">Избранные адреса</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -2,6 +2,8 @@ package uz.texnopos.mytaxi.utils
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -38,3 +40,7 @@ fun Fragment.bitmapFromVector(vectorResId: Int): BitmapDescriptor? {
     // after generating our bitmap we are returning our bitmap.
     return BitmapDescriptorFactory.fromBitmap(bitmap)
 }
+inline fun <T : View> T.onClick(crossinline func: T.() -> Unit) = setOnClickListener { func() }
+inline fun <T : Toolbar> T.navOnClick(crossinline func: T.() -> Unit) =
+    setNavigationOnClickListener { func() }
+
