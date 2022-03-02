@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uz.texnopos.mytaxi.ui.MainFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_main"
+        android:layout_width="match_parent"
+        android:backgroundTintMode="screen"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingStart="@dimen/margin_8"
+        android:outlineProvider="none"
+
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:backgroundTint="@null"
+            app:title="@null"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_nav_drawer"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/content_main" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

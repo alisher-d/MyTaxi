@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="uz.texnopos.mytaxi.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            app:popUpTo="@id/nav_graph"
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="uz.texnopos.mytaxi.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_tripHistoryFragment"
+            app:destination="@id/tripHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripHistoryFragment"
+        android:name="uz.texnopos.mytaxi.ui.history.TripHistoryFragment"
+        android:label="fragment_trip_history"
+        tools:layout="@layout/fragment_trip_history" />
+</navigation>
