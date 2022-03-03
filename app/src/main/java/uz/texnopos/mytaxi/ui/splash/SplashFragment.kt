@@ -16,7 +16,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        Handler(Looper.getMainLooper()).postDelayed(navigateUI(), 2000)
+        Handler(Looper.getMainLooper()).postDelayed(navigateUI(), 500)
 
     }
 
