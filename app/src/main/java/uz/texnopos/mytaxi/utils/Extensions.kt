@@ -8,6 +8,7 @@ import android.graphics.Canvas
 import android.location.LocationManager
 import android.os.Build
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
@@ -60,6 +61,15 @@ fun Fragment.isLocationEnabled(): Boolean {
     return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
         LocationManager.NETWORK_PROVIDER
     )
+}
+
+fun Context.toast(text: String, duration: Int = Toast.LENGTH_SHORT) =
+    Toast.makeText(this, text, duration).show()
+
+fun Fragment.toast(text: String, duration: Int = Toast.LENGTH_SHORT) {
+    if (context != null) {
+        context!!.toast(text, duration)
+    }
 }
 
 

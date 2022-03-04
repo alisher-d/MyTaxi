@@ -61,8 +61,10 @@ dependencies {
     // (Optional) KTX for the Maps SDK for Android Utility Library
     implementation 'com.google.maps.android:maps-utils-ktx:3.2.1'
 
-    //Location
+    //Location and Routing
     implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.github.jd-alexander:library:1.1.0'
 
     //Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
