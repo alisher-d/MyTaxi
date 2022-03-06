@@ -113,7 +113,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                 is State.SuccessState -> {
 //                    binding.btnMyLocation.clearAnimation()
                     val cameraUpdate = CameraUpdateFactory.newLatLngZoom(it.data, 18f)
-                    googleMap.animateCamera(cameraUpdate)
+                    if (this::googleMap.isInitialized) googleMap.animateCamera(cameraUpdate)
                 }
             }
         }

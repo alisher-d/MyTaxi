@@ -13,11 +13,13 @@ import com.google.maps.android.ktx.addMarker
 import com.google.maps.android.ktx.addPolyline
 import dagger.hilt.android.AndroidEntryPoint
 import uz.texnopos.mytaxi.R
+import uz.texnopos.mytaxi.data.SharedPref
 import uz.texnopos.mytaxi.data.model.Destination
 import uz.texnopos.mytaxi.databinding.FragmentTripDetailBinding
 import uz.texnopos.mytaxi.helper.SupportMapFragment
 import uz.texnopos.mytaxi.ui.map.MapTypeDialog
 import uz.texnopos.mytaxi.utils.*
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -25,6 +27,9 @@ class TripDetailFragment : Fragment(R.layout.fragment_trip_detail) {
     private val binding by viewBinding(FragmentTripDetailBinding::bind)
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
     private val viewModel by viewModels<TripDetailVM>()
+
+    @Inject
+    lateinit var pref: SharedPref
 
     private lateinit var googleMap: GoogleMap
     private lateinit var destination: Destination
@@ -39,6 +44,7 @@ class TripDetailFragment : Fragment(R.layout.fragment_trip_detail) {
             mapFragment.getMapAsync(mapFragment)
             mapFragment.onMapReady {
                 googleMap = it
+                googleMap.mapType = pref.mapType
                 googleMap.uiSettings.apply {
                     isCompassEnabled = false
                 }
