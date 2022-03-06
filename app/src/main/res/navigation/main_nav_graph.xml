@@ -2,32 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/mainFragment">
 
 
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="uz.texnopos.mytaxi.ui.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash">
-        <action
-            app:popUpTo="@id/nav_graph"
-            android:id="@+id/action_splashFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="uz.texnopos.mytaxi.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_tripHistoryFragment"
             app:destination="@id/tripHistoryFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/tripHistoryFragment"
@@ -46,5 +35,9 @@
         android:id="@+id/tripDetailFragment"
         android:name="uz.texnopos.mytaxi.ui.detail.TripDetailFragment"
         android:label="fragment_trip_detail"
-        tools:layout="@layout/fragment_trip_detail" />
+        tools:layout="@layout/fragment_trip_detail">
+        <argument
+            android:name="destination"
+            app:argType="uz.texnopos.mytaxi.data.model.Destination" />
+    </fragment>
 </navigation>

@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.splash.SplashFragment">
+    >
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
+        android:layout_height="72dp"
         android:background="@color/white"
         android:gravity="bottom"
         android:outlineProvider="none"
@@ -22,20 +22,58 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_arrow_left"
-            app:navigationIconTint="#434343"
+            app:navigationIconTint="@color/black_2"
             app:title="@string/my_trips"
+
             app:titleTextAppearance="@style/Toolbar.TitleText"
-            app:titleTextColor="#434343" />
+            app:titleTextColor="@color/black_2" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/shimmerLayout"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:shimmer_duration="2000">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/margin_standard">
+
+                <include layout="@layout/item_trip_shimmer" />
+
+                <include layout="@layout/item_trip_shimmer" />
+
+                <include layout="@layout/item_trip_shimmer" />
+
+                <include layout="@layout/item_trip_shimmer" />
+
+                <include layout="@layout/item_trip_shimmer" />
+
+                <include layout="@layout/item_trip_shimmer" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTrips"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:overScrollMode="never"
         android:paddingHorizontal="@dimen/margin_standard"
         android:splitMotionEvents="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
         tools:listitem="@layout/item_trip" />
 </androidx.constraintlayout.widget.ConstraintLayout>

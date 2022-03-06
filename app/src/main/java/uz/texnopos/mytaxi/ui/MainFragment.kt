@@ -1,13 +1,15 @@
 package uz.texnopos.mytaxi.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper.getMainLooper
 import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.navigation.NavigationView
 import uz.texnopos.mytaxi.R
@@ -20,8 +22,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController =
-            Navigation.findNavController(requireActivity(), R.id.mainContainer)
+        navController = findNavController(requireActivity(), R.id.mainContainer)
         binding.apply {
             val activity = (requireActivity() as AppCompatActivity)
             activity.setSupportActionBar(appBarMain.toolbar)
@@ -39,7 +40,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             drawerLayout.setViewScale(Gravity.START, 0.90f)
             drawerLayout.setViewElevation(Gravity.START, 18f)
             drawerLayout.setRadius(Gravity.START, 40f)
-            drawerLayout.setViewRotation(Gravity.START,20f)
 
             appBarMain.toolbar.setNavigationOnClickListener {
                 drawerLayout.openDrawer(GravityCompat.START)
@@ -57,7 +57,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         return when (item.itemId) {
             R.id.nav_trips -> {
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
-                navController.navigate(R.id.action_mainFragment_to_tripHistoryFragment)
+                Handler(getMainLooper()).postDelayed({
+                    navController.navigate(R.id.action_mainFragment_to_tripHistoryFragment)
+                }, 500)
                 true
             }
             else -> false

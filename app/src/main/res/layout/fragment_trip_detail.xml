@@ -1,35 +1,53 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnMapType"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_12"
+            android:background="@drawable/circle_background"
+            android:clickable="true"
+            android:elevation="@dimen/margin_8"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_layers"
+            app:layout_constraintBottom_toBottomOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.5"
-            />
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/tripDetailMap"
-            android:name="uz.texnopos.mytaxi.ui.map.SupportMapFragment"
+            android:name="uz.texnopos.mytaxi.helper.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatImageView
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/btnBack"
             android:elevation="4dp"
             android:clickable="true"
+            android:id="@+id/btnBack"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/ic_back"
             android:layout_margin="@dimen/margin_12"
@@ -39,7 +57,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/bottom_sheet"
+        android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_dialog"
@@ -57,7 +75,6 @@
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgCarRegNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_car_number"
@@ -78,8 +95,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8"
+                    android:fontFamily="@font/lato_medium"
                     android:text="Чёрный Chevrolet Malibu"
-                    android:textColor="#858585"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintTop_toBottomOf="@id/imgCarType" />
 
                 <View
@@ -114,9 +132,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/margin_8"
                             android:text="улица Sharof Rashidov, Ташкент"
-                            android:textColor="#434343"
+                            android:fontFamily="@font/lato_bold"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black_2" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -134,9 +152,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="5a улица Асадуллы Ходжаева"
-                            android:textColor="#434343"
+                            android:fontFamily="@font/lato_bold"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black_2" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -165,8 +183,9 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:background="@drawable/highlight"
                         android:orientation="vertical"
                         android:padding="@dimen/margin_8">
 
@@ -178,7 +197,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Помощь"
+                            android:fontFamily="@font/lato_semibold"
+                            android:text="@string/help"
                             android:textColor="#EDB118" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
@@ -196,8 +216,11 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:background="@drawable/highlight"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:orientation="vertical"
                         android:padding="@dimen/margin_8">
 
@@ -210,6 +233,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Повторить"
+                            android:fontFamily="@font/lato_semibold"
                             android:textColor="#3F7BEB" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
@@ -227,9 +251,11 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
-
+                        android:background="@drawable/highlight"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:orientation="vertical"
                         android:padding="@dimen/margin_8">
 
@@ -243,6 +269,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Позвонить"
+                            android:fontFamily="@font/lato_semibold"
                             android:textColor="#479F6A" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
@@ -257,10 +284,10 @@
                     android:id="@+id/tvDriver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Водитель"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_black"
+                    android:text="@string/driver"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
@@ -292,11 +319,11 @@
                     <TextView
                         android:id="@+id/tvDriverFullName"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/lato_bold"
                         android:layout_height="wrap_content"
                         android:text="Alisher Kazakbaev"
-                        android:textColor="#434343"
+                        android:textColor="@color/black_2"
                         android:textSize="18sp"
-                        android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -306,6 +333,7 @@
                         android:layout_marginTop="4dp"
                         android:gravity="center_vertical"
                         android:text="Рейтинг: "
+                        android:fontFamily="@font/lato_semibold"
                         android:textColor="#B8B8B8"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvDriverFullName" />
@@ -332,12 +360,12 @@
                         android:layout_marginTop="4dp"
                         android:gravity="center_vertical"
                         android:text="Поездки: "
+                        android:fontFamily="@font/lato_semibold"
                         android:textColor="#B8B8B8"
                         app:layout_constraintStart_toEndOf="@id/tvRatingCount"
                         app:layout_constraintTop_toBottomOf="@id/tvDriverFullName" />
 
                     <TextView
-                        android:id="@+id/tvTripsCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -361,9 +389,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Общие данные"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
@@ -380,17 +408,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Тариф"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/viewLine3" />
 
                 <TextView
-                    android:id="@+id/tvTariffValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Бизнес"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvTariff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvTariff" />
@@ -401,17 +430,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Способ оплаты"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvTariff" />
 
                 <TextView
-                    android:id="@+id/tvPaymentMethodValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  Наличными"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:drawableStartCompat="@drawable/ic_money"
                     app:layout_constraintBottom_toBottomOf="@id/tvPaymentMethod"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -423,17 +453,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Заказ №"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvPaymentMethod" />
 
                 <TextView
-                    android:id="@+id/tvOrderId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3917866"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvOrder"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvOrder" />
@@ -444,17 +475,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Дата и время поездки"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvOrder" />
 
                 <TextView
-                    android:id="@+id/tvDateValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="29 Август, 19:20"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvDate"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvDate" />
@@ -464,18 +496,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     android:text="Продолжительность поездки"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvDate" />
 
                 <TextView
-                    android:id="@+id/tvDurationValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="00:45"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvDuration"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvDuration" />
@@ -492,9 +525,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Расчёт стоимости"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
@@ -510,18 +543,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
+                    android:fontFamily="@font/lato_semibold"
                     android:text="Минимальная сумма"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/viewLine4" />
 
                 <TextView
-                    android:id="@+id/tvMinSumValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5 000 UZS"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvMinSum"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvMinSum" />
@@ -532,17 +566,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Повышенный спрос"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvMinSum" />
 
                 <TextView
-                    android:id="@+id/tvIncreasedDemandValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  +3 000 UZS"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:drawableStartCompat="@drawable/ic_money"
                     app:layout_constraintBottom_toBottomOf="@id/tvIncreasedDemand"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -554,17 +589,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Сумма поездки"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvIncreasedDemand" />
 
                 <TextView
-                    android:id="@+id/tvTripPriceValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="31 645 UZS"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvTripPrice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvTripPrice" />
@@ -575,17 +611,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Цена ожидании"
+                    android:fontFamily="@font/lato_semibold"
+                    android:textColor="@color/grey_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvTripPrice" />
 
                 <TextView
-                    android:id="@+id/tvPendingPriceValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 UZS"
                     android:textColor="@color/black_2"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvPendingPrice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvPendingPrice" />
@@ -604,20 +641,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
                     android:text="Итого"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/viewLine5" />
 
                 <TextView
-                    android:id="@+id/tvTotalValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="39 600 UZS"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_2"
                     app:layout_constraintBottom_toBottomOf="@id/tvTotal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvTotal" />
@@ -625,9 +661,9 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btnDeleteData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/btnDeleteData"
                 android:layout_marginTop="@dimen/margin_24"
                 app:cardBackgroundColor="#FFEAE9"
                 app:cardCornerRadius="@dimen/margin_12"
@@ -635,7 +671,6 @@
                 app:cardUseCompatPadding="true">
 
                 <TextView
-                    android:id="@+id/tvDeleteData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -643,7 +678,7 @@
                     android:text=" Удалить данные"
                     android:textColor="#FF453A"
                     android:textSize="17sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
                     app:drawableStartCompat="@drawable/ic_delete" />
             </com.google.android.material.card.MaterialCardView>
         </androidx.appcompat.widget.LinearLayoutCompat>

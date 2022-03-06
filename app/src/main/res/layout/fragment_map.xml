@@ -2,17 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/container"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
     tools:context=".ui.map.MapFragment">
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
-        android:name="uz.texnopos.mytaxi.ui.map.SupportMapFragment"
+        android:name="uz.texnopos.mytaxi.helper.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -25,21 +24,37 @@
 
         />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/btn_my_location"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_12"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnMapType"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="@dimen/margin_standard"
-        android:elevation="@dimen/margin_8"
-        android:src="@drawable/ic_my_location"
+        android:layout_marginBottom="@dimen/margin_12"
+        android:background="@drawable/circle_background"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@id/card_clue"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        android:elevation="@dimen/margin_8"
+        android:focusable="true"
+        android:scaleType="center"
+        android:src="@drawable/ic_layers"
+        app:layout_constraintBottom_toTopOf="@id/btnMyLocation"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btnMyLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginBottom="@dimen/margin_12"
+        android:clickable="true"
+        android:elevation="@dimen/margin_8"
+        android:focusable="true"
+        android:src="@drawable/ic_my_location"
+        app:layout_constraintBottom_toTopOf="@id/cardClue"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_clue"
+        android:id="@+id/cardClue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
@@ -72,17 +87,18 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:scaleType="centerCrop"
                         android:layout_marginStart="@dimen/margin_standard"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/ic_light_red_pin" />
 
                     <TextView
                         android:id="@+id/tvAddressName"
                         android:layout_width="wrap_content"
+                        android:fontFamily="@font/lato_bold"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_8"
                         android:layout_gravity="center_vertical"
-                        android:textColor="#B0B0B0" />
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:textColor="@color/text_grey_color" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
@@ -106,11 +122,11 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/img_location"
+                        android:id="@+id/imgLocation"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:src="@drawable/ic_location_blue"
                         android:scaleType="centerCrop"
+                        android:src="@drawable/ic_location_blue"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -119,11 +135,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_8"
-                        android:text="Куда?"
-                        android:textColor="#434343"
-                        android:textStyle="bold"
+                        android:text="@string/where_to"
+                        android:fontFamily="@font/lato_bold"
+                        android:textColor="@color/black_2"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/img_location"
+                        app:layout_constraintStart_toEndOf="@id/imgLocation"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
@@ -131,12 +147,12 @@
                         android:layout_height="0dp"
                         android:layout_marginEnd="@dimen/margin_12"
                         android:background="#CBCBCB"
-                        app:layout_constraintBottom_toBottomOf="@id/img_arrow"
-                        app:layout_constraintEnd_toStartOf="@id/img_arrow"
-                        app:layout_constraintTop_toTopOf="@id/img_arrow" />
+                        app:layout_constraintBottom_toBottomOf="@id/imgArrow"
+                        app:layout_constraintEnd_toStartOf="@id/imgArrow"
+                        app:layout_constraintTop_toTopOf="@id/imgArrow" />
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/img_arrow"
+                        android:id="@+id/imgArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"

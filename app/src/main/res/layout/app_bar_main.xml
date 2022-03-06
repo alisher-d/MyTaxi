@@ -7,7 +7,7 @@
     tools:context="uz.texnopos.mytaxi.ui.MainFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_main"
+        android:id="@+id/appBarMain"
         android:layout_width="match_parent"
         android:backgroundTintMode="screen"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:backgroundTint="@null"
-            app:title="@null"
+            app:title=" "
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_nav_drawer"
             />

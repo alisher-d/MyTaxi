@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="bottom"
     android:paddingStart="@dimen/margin_8"
     android:paddingTop="32dp"
     android:background="@color/my_taxi_black"
-    >
+    tools:ignore="HardcodedText">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -43,33 +44,29 @@
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/user_first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Alisher"
                 android:includeFontPadding="false"
-                android:textColor="@color/white"
-                android:textStyle="bold"
+                android:textColor="@color/white_2"
+                app:fontFamily="@font/sf_pro_text_bold"
                 android:textSize="17sp"
                  />
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/user_last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kazakbaev"
-                android:textStyle="bold"
+                app:fontFamily="@font/sf_pro_text_bold"
                 android:includeFontPadding="false"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/white"
+                android:textColor="@color/white_2"
                 android:textSize="17sp"
                 android:lines="1"
                />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/user_phone"
                 app:layout_constraintStart_toEndOf="@id/profileAvatar"
-                android:text="+998(97) 220-24-56"
-                android:textStyle="bold"
+                android:text="+998(97) 220-21-56"
+                app:fontFamily="@font/lato_medium"
                 android:includeFontPadding="false"
                 android:textColor="@color/phone_text_color"
                 android:layout_width="wrap_content"

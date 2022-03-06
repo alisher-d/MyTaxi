@@ -2,6 +2,10 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -52,6 +56,11 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    //Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.39.1"
+    kapt "com.google.dagger:hilt-compiler:2.39.1"
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+
     //ViewBinding
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.0-beta02'
 
@@ -68,5 +77,8 @@ dependencies {
 
     //Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 }

@@ -1,7 +1,7 @@
 package uz.texnopos.mytaxi
 
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-}
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(R.layout.activity_main)

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package uz.texnopos.mytaxi.utils
 
 import android.annotation.SuppressLint
@@ -11,7 +13,7 @@ fun isConnected(): Boolean = App.instance.isAvailableNetwork()
 
 @SuppressLint("MissingPermission")
 private fun Context.isAvailableNetwork(): Boolean {
-    var result = false
+    val result: Boolean
     val connectivityManager =
         getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val networkCapabilities = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
