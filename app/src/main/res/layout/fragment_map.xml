@@ -9,6 +9,7 @@
     tools:context=".ui.map.MapFragment">
 
 
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="uz.texnopos.mytaxi.helper.SupportMapFragment"
@@ -52,6 +53,19 @@
         app:layout_constraintBottom_toTopOf="@id/cardClue"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginBottom="@dimen/margin_12"
+        android:indeterminate="true"
+        android:visibility="visible"
+        android:indeterminateTint="#2E73DA"
+        app:layout_constraintBottom_toTopOf="@id/cardClue"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardClue"

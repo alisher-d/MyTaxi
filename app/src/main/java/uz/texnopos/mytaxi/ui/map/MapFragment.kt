@@ -7,9 +7,10 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.Settings
 import android.view.View
-import android.view.animation.AnimationUtils
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -36,10 +37,6 @@ class MapFragment : Fragment(R.layout.fragment_map) {
     private lateinit var googleMap: GoogleMap
     private lateinit var center: LatLng
     private val mapTypeDialog by lazy { MapTypeDialog() }
-    private val rotateAnimation by lazy {
-        AnimationUtils.loadAnimation(requireContext(),
-            R.anim.rotate_right)
-    }
 
     private val Nukus = LatLng(42.460168, 59.607280)
 
@@ -63,12 +60,13 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             }
             googleMap.mapType = pref.mapType
 
-//            if(googleMap)
-//            val cameraUpdate = CameraUpdateFactory.newLatLngZoom(Nukus, 5f)
-//            googleMap.animateCamera(cameraUpdate)
+            if (!this::center.isInitialized)
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Nukus, 5f))
 
             center = googleMap.cameraPosition.target
             viewModel.getAddressByCoordinate(center)
+
+
             googleMap.setOnCameraMoveListener {
                 center = googleMap.cameraPosition.target
                 timer?.cancel()
@@ -102,16 +100,14 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         viewModel.myLocation.observe(viewLifecycleOwner) {
             when (it) {
                 is State.ErrorState -> {
-//                    binding.btnMyLocation.clearAnimation()
+                    isSearchingLocation(false)
                     toast("Неудача: ${it.exception}")
-                    if (it.exception == null) toast("Попробуйте перезапустить приложение")
                 }
                 is State.LoadingState -> {
-                    toast("Поиск...")
-//                    binding.btnMyLocation.startAnimation(rotateAnimation)
+                    isSearchingLocation(true)
                 }
                 is State.SuccessState -> {
-//                    binding.btnMyLocation.clearAnimation()
+                    isSearchingLocation(false)
                     val cameraUpdate = CameraUpdateFactory.newLatLngZoom(it.data, 18f)
                     if (this::googleMap.isInitialized) googleMap.animateCamera(cameraUpdate)
                 }
@@ -174,8 +170,15 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         startActivity(intent)
     }
 
-    override fun onStop() {
-        super.onStop()
-        viewModel.cancellationTokenSource.cancel()
+    override fun onDetach() {
+        super.onDetach()
+//        viewModel.cancellationTokenSource.cancel()
+    }
+
+    private fun isSearchingLocation(isSearching: Boolean) {
+        binding.apply {
+            progressBar.isVisible = isSearching
+            btnMyLocation.isInvisible = isSearching
+        }
     }
 }

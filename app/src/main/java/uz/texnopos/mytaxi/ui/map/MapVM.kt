@@ -68,7 +68,6 @@ class MapVM @Inject constructor(
                 } else {
                     _myLocation.value = State.ErrorState(task.exception)
                 }
-                cancellationTokenSource.cancel()
             }
     }
 }

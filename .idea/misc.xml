@@ -6,6 +6,7 @@
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.128" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable-v24/round_corner.xml" value="0.1485" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/circle_background.xml" value="0.1485" />
+        <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/highlight.xml" value="0.1485" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/hightlight.xml" value="0.1465" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/ic_again.xml" value="0.1545" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/ic_arrow_left.xml" value="0.174" />
@@ -36,6 +37,7 @@
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/ic_star_border.xml" value="0.145" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/ic_taxi2.xml" value="0.1475" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/ic_wallet.xml" value="0.145" />
+        <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/progress_dr.xml" value="0.1485" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/rounded_dialog.xml" value="0.1945" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/drawable/splash_background.xml" value="0.1475" />
         <entry key="..\:/AndroidStudioProjects/MyTaxi/app/src/main/res/layout/activity_main.xml" value="0.19895833333333332" />

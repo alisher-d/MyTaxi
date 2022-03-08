@@ -9,12 +9,18 @@ import uz.texnopos.mytaxi.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : Activity() {
+    private lateinit var handler : Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Handler(mainLooper).postDelayed({
+        handler = Handler(mainLooper)
+        handler.postDelayed(startActivity(), 1000)
+    }
+
+    private fun startActivity(): Runnable {
+        return Runnable {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }
     }
 }
