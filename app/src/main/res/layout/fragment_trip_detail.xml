@@ -60,6 +60,7 @@
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         android:background="@drawable/rounded_dialog"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

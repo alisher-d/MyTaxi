@@ -60,5 +60,4 @@ class MapTypeDialog : DialogFragment() {
             }
         }
     }
-
 }

@@ -36,6 +36,7 @@ class TripHistoryFragment : Fragment(R.layout.fragment_trip_history) {
                 }, 3000)
                 isCreated = true
             }
+
             tripAdapter.setData(trips)
             toolbar.navOnClick {
                 requireActivity().onBackPressed()

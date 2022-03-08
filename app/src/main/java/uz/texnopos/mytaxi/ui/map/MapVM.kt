@@ -2,7 +2,6 @@ package uz.texnopos.mytaxi.ui.map
 
 import android.annotation.SuppressLint
 import android.location.Geocoder
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +14,6 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import uz.texnopos.mytaxi.utils.State
-import uz.texnopos.mytaxi.utils.TAG
 import uz.texnopos.mytaxi.utils.isConnected
 import javax.inject.Inject
 

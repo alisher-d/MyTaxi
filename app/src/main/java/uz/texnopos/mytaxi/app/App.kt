@@ -6,7 +6,6 @@ import android.util.DisplayMetrics
 import dagger.hilt.android.HiltAndroidApp
 import java.util.*
 
-
 @HiltAndroidApp
 class App : Application() {
     companion object {
@@ -22,5 +21,4 @@ class App : Application() {
         res.updateConfiguration(conf, dm)
         instance = this
     }
-
 }

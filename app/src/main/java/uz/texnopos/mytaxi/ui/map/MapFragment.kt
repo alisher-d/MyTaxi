@@ -37,9 +37,6 @@ class MapFragment : Fragment(R.layout.fragment_map) {
     private lateinit var googleMap: GoogleMap
     private lateinit var center: LatLng
     private val mapTypeDialog by lazy { MapTypeDialog() }
-
-    private val Nukus = LatLng(42.460168, 59.607280)
-
     @Inject
     lateinit var pref: SharedPref
     private val requestPermission =
@@ -61,7 +58,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             googleMap.mapType = pref.mapType
 
             if (!this::center.isInitialized)
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Nukus, 5f))
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NUKUS, 5f))
 
             center = googleMap.cameraPosition.target
             viewModel.getAddressByCoordinate(center)
@@ -170,9 +167,8 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         startActivity(intent)
     }
 
-    override fun onDetach() {
-        super.onDetach()
-//        viewModel.cancellationTokenSource.cancel()
+    companion object {
+        private val NUKUS = LatLng(42.460168, 59.607280)
     }
 
     private fun isSearchingLocation(isSearching: Boolean) {

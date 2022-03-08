@@ -48,6 +48,7 @@ class TripDetailFragment : Fragment(R.layout.fragment_trip_detail) {
                 googleMap.uiSettings.apply {
                     isCompassEnabled = false
                 }
+
                 observe()
                 viewModel.findRoutes(destination)
             }
