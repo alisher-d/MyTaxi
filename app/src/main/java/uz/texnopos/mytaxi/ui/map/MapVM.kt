@@ -13,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import uz.texnopos.mytaxi.helper.Event
 import uz.texnopos.mytaxi.utils.State
 import uz.texnopos.mytaxi.utils.isConnected
 import javax.inject.Inject
@@ -22,12 +23,12 @@ class MapVM @Inject constructor(
     private val geocoder: Geocoder,
     private val fusedLocationClient: FusedLocationProviderClient,
 ) : ViewModel() {
-    var cancellationTokenSource = CancellationTokenSource()
+    private var cancellationTokenSource = CancellationTokenSource()
 
     private var _address = MutableLiveData<String>()
     val address get() = _address
 
-    private var _myLocation = MutableLiveData<State<LatLng>>()
+    private var _myLocation = MutableLiveData<Event<State<LatLng>>>()
     val myLocation get() = _myLocation
 
     fun getAddressByCoordinate(latLng: LatLng) {
@@ -52,19 +53,18 @@ class MapVM @Inject constructor(
 
     @SuppressLint("MissingPermission")
     fun requestCurrentLocation() {
-        _myLocation.value = State.LoadingState
+        _myLocation.value = Event(State.LoadingState)
         fusedLocationClient.getCurrentLocation(
             PRIORITY_HIGH_ACCURACY,
             cancellationTokenSource.token
         )
             .addOnCompleteListener { task ->
-
                 if (task.isSuccessful) {
                     val location = task.result
                     val coordinate = LatLng(location.latitude, location.longitude)
-                    _myLocation.value = State.SuccessState(coordinate)
+                    _myLocation.value = Event(State.SuccessState(coordinate))
                 } else {
-                    _myLocation.value = State.ErrorState(task.exception)
+                    _myLocation.value = Event(State.ErrorState(task.exception))
                 }
             }
     }

@@ -24,6 +24,7 @@ import uz.texnopos.mytaxi.BuildConfig
 import uz.texnopos.mytaxi.R
 import uz.texnopos.mytaxi.data.SharedPref
 import uz.texnopos.mytaxi.databinding.FragmentMapBinding
+import uz.texnopos.mytaxi.helper.EventObserver
 import uz.texnopos.mytaxi.helper.SupportMapFragment
 import uz.texnopos.mytaxi.utils.*
 import javax.inject.Inject
@@ -44,10 +45,12 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             if (isGranted) permissionApprovedSnackBar() else permissionDeniedSnackBar()
         }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(mapFragment)
+        observers()
         mapFragment.onMapReady {
             googleMap = it
             googleMap.uiSettings.apply {
@@ -75,7 +78,6 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                 }.start()
             }
         }
-        observers()
 
         binding.apply {
             btnMyLocation.onClick {
@@ -93,8 +95,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         viewModel.address.observe(viewLifecycleOwner) {
             binding.tvAddressName.text = it
         }
-
-        viewModel.myLocation.observe(viewLifecycleOwner) {
+        viewModel.myLocation.observe(viewLifecycleOwner, EventObserver {
             when (it) {
                 is State.ErrorState -> {
                     isSearchingLocation(false)
@@ -109,7 +110,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                     if (this::googleMap.isInitialized) googleMap.animateCamera(cameraUpdate)
                 }
             }
-        }
+        })
     }
 
     private fun showAlert() {
@@ -125,7 +126,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
     }
 
     private fun MapTypeDialog.show() {
-        if (!isAdded) show(this@MapFragment.requireActivity().supportFragmentManager, TAG)
+        if (!this.isResumed) show(this@MapFragment.requireActivity().supportFragmentManager, TAG)
         mapTypeOnClick {
             if (it != googleMap.mapType) {
                 googleMap.mapType = it
@@ -177,4 +178,5 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             btnMyLocation.isInvisible = isSearching
         }
     }
+
 }

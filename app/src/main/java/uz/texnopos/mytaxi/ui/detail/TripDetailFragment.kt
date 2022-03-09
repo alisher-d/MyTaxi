@@ -90,7 +90,8 @@ class TripDetailFragment : Fragment(R.layout.fragment_trip_detail) {
         viewModel.destination.observe(viewLifecycleOwner) {
             when (it) {
                 is State.ErrorState -> toast(it.exception?.localizedMessage ?: "Что-то не так")
-                is State.LoadingState -> toast("Поиск маршрута...")
+                is State.LoadingState -> {
+                }
                 is State.SuccessState -> {
 
                     val shortestRouteIndex = it.data.shortestRouteIndex
@@ -108,7 +109,7 @@ class TripDetailFragment : Fragment(R.layout.fragment_trip_detail) {
                     val endLatLng = polyline.points[k - 1]
 
                     val cameraUpdateMiddle = newLatLngZoom(middleLatLng ?: destination.start, 12f)
-                    googleMap.animateCamera(cameraUpdateMiddle)
+                    googleMap.moveCamera(cameraUpdateMiddle)
 
                     googleMap.addMarker {
                         title("Откуда?")

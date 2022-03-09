@@ -12,8 +12,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import uz.texnopos.mytaxi.helper.Event
 
 const val TAG = "tekseriw"
 fun Fragment.bitmapFromVector(vectorResId: Int): BitmapDescriptor {
@@ -87,3 +89,5 @@ fun Long.changeFormat(): String {
 
 
 fun Fragment.getColorRes(colorRes: Int): Int = ContextCompat.getColor(requireContext(), colorRes)
+
+
